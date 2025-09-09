@@ -1,6 +1,4 @@
-
-Flask
-Flask-WTF
-WTForms
-Flask-Bootstrap
-email-validator
+Flask==3.1.2
+flask-bootstrap5
+Flask-WTF==1.2.2
+gunicorn
