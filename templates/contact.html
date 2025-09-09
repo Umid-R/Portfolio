@@ -1,0 +1,43 @@
+{%include "header.html"%}
+{%from 'bootstrap5/form.html' import render_form%}
+<div class="box_contact">
+    
+        {% if sent%}
+        
+       <h1 style="color: rgb(87, 89, 90);">Sent</h1>
+        {% else %}
+        <h1>Contact Me</h1>
+        <h4>Have Questions? I Have Answers</h4>
+        {% endif %}
+</div>
+<!-- <form method="POST" action="{{url_for('contact')}}" novalidate>
+    {{ form.csrf_token }}
+    <p>
+        {{ form.name.label }} <br>{{ form.name(size=20) }}
+        {%for err in form.name.errors%}
+        <span style="color:red">{{err}} </span>
+        {%endfor%}
+    </p>
+    <p>
+        {{ form.email.label }} <br> {{ form.email(size=20) }}
+        {%for err in form.email.errors%}
+        <span style="color:red">{{err}} </span>
+        {%endfor%}
+    </p>
+    <p>
+        {{ form.phone.label }} <br> {{ form.phone(size=20) }}
+        {%for err in form.phone.errors%}
+        <span style="color:red">{{err}} </span>
+        {%endfor%}
+    </p>
+    <p>
+        {{ form.message.label }} <br>{{ form.message(size=20) }}
+        {%for err in form.message.errors%}
+        <span style="color:red">{{err}} </span>
+        {%endfor%}
+    </p>
+    <p> {{ form.submit }}</p>
+    
+</form> -->
+{{render_form(form)}}
+{%include "footer.html"%}
