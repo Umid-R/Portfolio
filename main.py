@@ -8,11 +8,24 @@ year=datetime.today().year
 #Function for sending message through SMPTlib
 EMAIL='umidraxmatullayev2005@gmail.com'
 EMAIL_PASSWORD='x t u u v m q x t a y n w s h u'
-def send_message(name,email,phone,message):
-    with SMTP('smtp.gmail.com') as connection:
-            connection.starttls()
-            connection.login(user=EMAIL,password=EMAIL_PASSWORD)
-            connection.sendmail(from_addr=EMAIL,to_addrs='umidraxmatullayev96@gmail.com',msg=f'Subject:New Message \n\n{name}\n{email}\n{phone}\n{message}')
+import smtplib, ssl
+
+def send_message(name, email, phone, message):
+    try:
+        smtp_server = "smtp.gmail.com"
+        port = 465
+        receiver_email = "umidraxmatullayev96@gmail.com"
+        msg = f"Subject: New Contact Message\n\nFrom: {name}\nPhone: {phone}\nEmail: <{email}>\n\n{message}"
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(EMAIL, EMAIL_PASSWORD)
+            server.sendmail(EMAIL, receiver_email, msg)
+
+        return True
+    except Exception as e:
+        print("Email sending failed:", e)
+        return False
           
 app=Flask(__name__)
 bootstrap = Bootstrap5(app)
